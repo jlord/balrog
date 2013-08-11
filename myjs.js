@@ -6,10 +6,9 @@ var fs = require('fs')
 var path = require('path')
 var _ = require('underscore')
 
-glob("*.md", function(err, postFilenames) {
+glob("!(README)*.md", {nonegate:true}, function(err, postFilenames) {
   if (err) return console.log(err)
   var postNames = postFilenames.map(function(name) {
-  	if (name === 'README') return
     return path.basename(name, '.md')
   })
 	console.log("Root Page Names", postNames)
