@@ -1,1 +1,6 @@
-{}
+{
+	"templates": {
+		"flat-page": ["about", "contact"],
+		"single-post": ["/posts/*.md"]
+	}
+}
