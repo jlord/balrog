@@ -5,6 +5,7 @@ var $ = require('cheerio')
 var fs = require('fs')
 var path = require('path')
 var mkdirp = require('mkdirp')
+var cpr = require('cpr')
 
 mkdirp('site/blog', function (err) {
   if (err) console.error(err)
@@ -18,7 +19,10 @@ function buildSite(data) {
 	parseMarkdown(data, 'pages', '/', '/site/')
 	parseMarkdown(data, 'posts', '/posts/', '/site/blog/')
 	parseHTML(data, 'html', '/', '/site/')
-	/// copy assets
+	// copy assets folder
+	cpr('assets', 'site/assets', {overwrite: true}, function(errs, files) {
+    console.log(errs, files)
+	})
 }
 
 function loadEverything(cb) {
@@ -128,8 +132,6 @@ function addToTemplate(data, content, filename, finalDir, template) {
 		var partialContent = fs.readFileSync(__dirname + '/shared/' + partial + '.html').toString()
 		handlebars.registerPartial(partial, partialContent)
 	})
-
-	// handlebars.registerPartial('header', '<p>Hi the header</p>')
 
   var template = handlebars.compile(source)
   var build = {content: content}
