@@ -1,6 +1,10 @@
 {
+	"site-route": "",
+	"site-title": "jlord builds",
+	"site-description": "jlord builds this site",
+	"site-author": "jlord",
 	"templates": {
-		"flat-page": ["about", "contact"],
+		"flat-page": ["about", "contact", "index"],
 		"single-post": ["/posts/*.md"]
 	}
 }
