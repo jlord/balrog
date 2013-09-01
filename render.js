@@ -4,15 +4,22 @@ var handlebars = require('handlebars')
 var $ = require('cheerio')
 var fs = require('fs')
 var path = require('path')
-var _ = require('underscore')
+var mkdirp = require('mkdirp')
 
-loadEverything(function(data) {
-	console.log("tada", data)
+mkdirp('site/blog', function (err) {
+  if (err) console.error(err)
+	else loadEverything(buildSite)
+})
 
+function buildSite(data) {
+	// now parse, build and write everything
+
+	/// do it with callbacks
 	parseMarkdown(data, 'pages', '/', '/site/')
 	parseMarkdown(data, 'posts', '/posts/', '/site/blog/')
 	parseHTML(data, 'html', '/', '/site/')
-})
+	/// copy assets
+}
 
 function loadEverything(cb) {
   var left = 4
