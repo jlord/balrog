@@ -14,7 +14,7 @@ glob("!(README)*.md", {nonegate:true}, function(err, postFilenames) {
   var postNames = postFilenames.map(function(name) {
     return path.basename(name, '.md')
   })
-	console.log("STEP ONE: Root Page Names", postNames)
+	// console.log("STEP ONE: Root Page Names", postNames)
   parseMarkdown(postNames, '/')
 })
 
@@ -25,7 +25,7 @@ glob("posts/*.md", function(err, postFilenames) {
   var postNames = postFilenames.map(function(name) {
     return path.basename(name, '.md')
   })
-	console.log("STEP TWO: Post Page Names", postNames)
+	// console.log("STEP TWO: Post Page Names", postNames)
   parseMarkdown(postNames, '/posts/')
 })
 
@@ -37,7 +37,7 @@ glob("*.html", function(err, postFilenames) {
   })
 	postNames.forEach(function(postName) {
 		var content = fs.readFileSync(__dirname + '/' + postName + '.html').toString()
-		console.log("STEP THREE: Found HTML Files", postNames, content)
+		// console.log("STEP THREE: Found HTML Files", postNames, content)
 	})
 	
 })
@@ -50,22 +50,23 @@ function parseMarkdown(postFilenames, subDir) {
 		var destinationDir = routeDestination(subDir)
 		var raw = fs.readFileSync(__dirname + subDir + postName + '.md').toString() 
   	var postContent = marked(raw)
-	  var partials = findPartials(function (partials){
-			assignTemplate(subDir, postContent, postName, destinationDir, partials)
-			console.log('early partials', partials)
-		})
+  	assignTemplate(subDir, postContent, postName, destinationDir)
+	 //  var partials = findPartials(function (partials){
+		// 	assignTemplate(subDir, postContent, postName, destinationDir, partials)
+		// 	console.log('early partials', partials)
+		// })
 	})
 
 }
 
 // assign the page its correct template
-function assignTemplate(subDir, postContent, postName, destinationDir, partials) {
+function assignTemplate(subDir, postContent, postName, destinationDir) {
 	var assignedTemplate = ""
 	var config = JSON.parse(fs.readFileSync('config.json'))
 	var templates = config.templates
 	if (subDir !== '/') {
 		for(var key in templates) {
-			console.log(key)
+			// console.log(key)
 			var values = templates[key] // an array
 			values.forEach(function(value) {
 				if (value.match(subDir)) assignedTemplate = key + '.html'
@@ -81,27 +82,21 @@ function assignTemplate(subDir, postContent, postName, destinationDir, partials)
 			})
 		}
 	}
-	console.log("use this template", assignedTemplate)
-	addToTemplate(postContent, postName, destinationDir, assignedTemplate, partials)
+	// console.log("use this template", assignedTemplate)
+	addToTemplate(postContent, postName, destinationDir, assignedTemplate)
 }
 
-function findPartials(callback) {
-	var partialNames
-  glob("shared/*.html", function(err, partialFilenames) {
-    if (err) return console.log(err)
-    console.log(partialFilenames)
-	  partialNames = partialFilenames.map(function(name) {
-	    return path.basename(name, '.html')
-	  })
-	  callback(partialNames)
-	}) 	
-}
 
 // insert content into the template
-function addToTemplate(postContent, postName, destinationDir, template, partials) {
-	console.log("I GOT THESE PARTIAL NAMES", partials)
+function addToTemplate(postContent, postName, destinationDir, template) {
 	var source = fs.readFileSync(__dirname + '/templates/' + template).toString()
-	console.log('SOURCE', source)
+	// console.log('SOURCE', source)
+
+	// for (var key in partials) {
+ //  	var obj = partials[key]
+ //  	console.log('obj', obj, 'key', key)
+ //  	// handlebars.registerPartial( key, obj)
+ //  }
 
 	handlebars.registerPartial('header', '<p>Hi the header</p>')
 
@@ -110,6 +105,27 @@ function addToTemplate(postContent, postName, destinationDir, template, partials
   var build = {content: postContent}
   writeFile(template(build), postName, destinationDir)
 }
+
+// go fetch partial names
+glob("shared/*.html", function(err, partialFilenames) {
+  if (err) return console.log(err)
+  var partialNames = partialFilenames.map(function(name) {
+    return path.basename(name, '.html')
+  })
+  console.log('the partial names', partialNames)
+  return partialsContent(partialNames)
+}) 
+
+function partialsContent(partialNames) {
+	console.log('i got the partial names', partialNames)
+	var partialsContent = {}
+	partialNames.forEach(function (partial) {
+		partialsContent[partial] = fs.readFileSync(__dirname + '/shared/' + partial + '.html').toString()
+	})
+	console.log('content', partialsContent)
+	return partialsContent
+}
+
 
 // route the page's destination
 function routeDestination(subDir) {
