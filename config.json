@@ -4,8 +4,9 @@
 	"site_title": "jlord builds site",
 	"site_description": "jlord builds this site",
 	"site_author": "jlord",
+	"ignores": ["license, readme"],
 	"templates": {
-		"flat_page": ["about", "contact", "index"],
-		"single_post": ["/posts/*.md"]
+		"flat-page": ["about", "contact", "index"],
+		"single-post": ["/posts/*.md"]
 	}
 }

@@ -7,6 +7,7 @@ var path = require('path')
 var mkdirp = require('mkdirp')
 var cpr = require('cpr')
 var RSS = require('RSS')
+var genRSS = require('./meta.js')
 
 mkdirp('site/blog', function (err) {
   if (err) console.error(err)
@@ -22,7 +23,7 @@ function buildSite(data) {
 	parseHTML(data, 'html', '/', '/site/')
 	// copy assets folder
 	cpr('assets', 'site/assets', {overwrite: true}, function(errs, files) {
-    console.log(errs, files)
+    if (errs) console.log(errs)
 	})
 }
 
@@ -97,8 +98,8 @@ function parseMarkdown(data, section, subDir, finalDir) {
 	filenames.forEach(function(filename) {
 		var raw = fs.readFileSync(__dirname + subDir + filename + '.md').toString() 
   	var content = marked(raw)
-  	var templateMatch = assignTemplate(subDir, content, filename)
-  	addToTemplate(data, content, filename, finalDir, templateMatch)
+  	var template = assignTemplate(subDir, content, filename)
+  	addToTemplate(data, content, filename, finalDir, template)
 	})
 }
 
@@ -141,61 +142,7 @@ function addToTemplate(data, content, filename, finalDir, template) {
 
 function writeFile(build, postName, finalDir) {
 	fs.writeFile(__dirname + finalDir + postName + '.html', build, function (err) {
-  if (err) throw err;
+  if (err) throw err
+  else genRSS()
 })
-}
-
-function writeMetaData() {
-	glob("posts/*.md", function(err, postFilenames) {
-  if (err) return console.log(err)
-  var metaData = []
-  var postNames = postFilenames.map(function(name) {
-    return path.basename(name, '.md')
-  })
-	
-  postNames.forEach(function(post) {
-		var uri = 'posts/' + post + '.md'
-		fs.readFile(uri, function(err, file) {
-			var array = file.toString().split('\n')
-			var title = array[0].match(/^(\S+)\s(.*)/).slice(2).toString()
-			var author = array[1].match(/^(\S+)\s(.*)/).slice(2).toString()
-			var date = array[2].match(/^(\S+)\s(.*)/).slice(2).toString()
-			var tags = (array[3].match(/^(\S+)\s(.*)/).slice(2)).toString().split(',')
-
-			var metaObject = {"title": title, "author": author, "date": date, "tags": tags}
-			// console.log(metaObject)
-			metaData.push(metaObject)
-
-			console.log('meta', metaData)
-		})
-		// console.log('meta', metaData)
-	})
-	createRSS(metaData)
-	})
-}
-
-function createRSS(metaData) {
-  var docRSS = 'rss.xml'
-
-  var feed = new RSS({
-    title: 'Blog',
-    description: 'Open Web Developer',
-    feed_url: docRSS,
-    site_url: "baseURL",
-    image_url: 'icon.png',
-    author: "author"
-  })
-
-  var metaData = metaData.reverse()
-
-  _.each(metaData, function(doc) {
-    feed.item({
-      title:  doc.title,
-      description: doc.title,
-      url: baseURL + doc.name + '.html',
-      date: doc.date
-    })
-  })
-
-  fs.writeFileSync(docRSS, feed.xml())
 }
