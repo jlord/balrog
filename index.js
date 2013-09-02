@@ -17,7 +17,7 @@ mkdirp('site/blog', function (err) {
 function buildSite(data) {
 	// now parse, build and write everything
 
-	/// do it with callbacks
+	/// do it with callbacks?
 	parseMarkdown(data, 'pages', '/', '/site/')
 	parseMarkdown(data, 'posts', '/posts/', '/site/blog/')
 	parseHTML(data, 'html', '/', '/site/')

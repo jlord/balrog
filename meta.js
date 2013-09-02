@@ -48,7 +48,7 @@ function getPosts(cb) {
 	    description: config.site_description,
 	    feed_url: config.site_url + docRSS,
 	    site_url: config.site_url,
-	    image_url: 'icon.png',
+	    image_url: config.icon,
 	    author: config.site_author
 	  })
 
@@ -64,5 +64,4 @@ function getPosts(cb) {
 	  })
 
 	  fs.writeFileSync(docRSS, feed.xml())
-	  // console.log('Updated RSS')
 	}
