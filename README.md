@@ -10,12 +10,15 @@ I'm exercising my mind by making a static site generator just like I want it. Th
 - Uses [Handlebars](http://handlebarsjs.com/) for templating.
 - **No front matter**. Ability to leave blog posts in pure markdown format, for easy printing and linking-to/reading/downloading.
  - Post metadata is parsed from the common post headers (below), just make sure your lines coorelate and tags are separated with commas (you can have any varient of markdown header hashes):
-   ```markdown
-    # Title
-    ### Author
-    ### Date
-    ### Tags
-  ```
+
+```    
+# Title
+### Author
+### Date
+### Tags
+
+Hi this is a post. So pancake.
+```
 - Site metadata and template designation happens in `config.json`. You can link files or directories to a template. 
 
 ### Get Running
