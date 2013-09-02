@@ -35,7 +35,7 @@ Then you'll have your static files and RSS feed. Woo!
 
 ### Structure
 
-- **root** you can put .html or .md files in the root directory. These are for the purpose of pages such as about, contact and whatnots. _All .html and .md files will be parsed except for readme.md_.
+- **root** you can put .html or .md files in the root directory. These are for the purpose of pages such as about, contact and whatnots. _All .html and .md files will be parsed except for readme.md_ [for now](https://github.com/jlord/balrog/issues/5).
 - **assets** folder to contain subfolders for **css**, **imgs** or **js**. All of its contents are copied directly to the final `site` folder.
 - **posts** place your markdown post/blog files here. _No spaces in the filename._
 - **shared** contains your template partials/includes such as _header_ or _footer_ HTML files.
@@ -46,7 +46,24 @@ Then you'll have your static files and RSS feed. Woo!
 #### Other Files
 
 - **config.json** a .JSON file with site meta data in it and template designations. You can link files or directories to a template. 
-- **index.html** you'll want at least this. 
+
+```javascript
+    {
+      "site_route": "/site",
+      "site_url": "http://www.site.com/",
+      "site_title": "cool pizza",
+      "site_description": "wow",
+      "site_author": "helloworld",
+      "icon": "icon.png",
+      "ignores": ["license, readme"],
+      "templates": {
+        "flat-page": ["about", "contact", "index"],
+        "single-post": ["/posts/*.md"]
+      }
+    }
+```
+
+- **index.html** you'll want at least this in your root directory. 
 - **rss.xml** is generated afresh when you run `node index.js`
 - **license, readme.md** docs
 - **index.js, meta,js** the main files for executing all this stuff. meta.js generates the metadata and RSS.
