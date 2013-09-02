@@ -8,6 +8,10 @@
     "marked": "~0.2.9",
     "handlebars": "~1.0.12",
     "mkdirp": "~0.3.5",
-    "cpr": "~0.1.1"
+    "cpr": "~0.1.1",
+    "split": "~0.2.10",
+    "concat-stream": "~1.0.1",
+    "rss": "~0.2.0",
+    "underscore": "~1.5.1"
   }
 }
