@@ -1,6 +1,7 @@
 # Hi!
 
 ![balrog](assets/imgs/balrog.png)
+---
 
 I'm exercising my mind by making a static site generator just like I want it. There are many ([list](https://gist.github.com/davatron5000/2254924), [list](http://blog.bmannconsulting.com/node-static-site-generators/)) already out there. This isn't to compete, this is just some self sufficency and some weekend JavaScripting fun times. 
 
