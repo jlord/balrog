@@ -47,20 +47,20 @@ Then you'll have your static files and RSS feed. Woo!
 
 - **config.json** a .JSON file with site meta data in it and template designations. You can link files or directories to a template. 
 
-```javascript
-    {
-      "site_route": "/site",
-      "site_url": "http://www.site.com/",
-      "site_title": "cool pizza",
-      "site_description": "wow",
-      "site_author": "helloworld",
-      "icon": "icon.png",
-      "ignores": ["license, readme"],
-      "templates": {
-        "flat-page": ["about", "contact", "index"],
-        "single-post": ["/posts/*.md"]
-      }
-    }
+```json
+{
+  "site_route": "/site",
+  "site_url": "http://www.site.com/",
+  "site_title": "cool pizza",
+  "site_description": "wow",
+  "site_author": "helloworld",
+  "icon": "icon.png",
+  "ignores": ["license, readme"],
+  "templates": {
+    "flat-page": ["about", "contact", "index"],
+    "single-post": ["/posts/*.md"]
+  }
+}
 ```
 
 - **index.html** you'll want at least this in your root directory. 
