@@ -1,5 +1,5 @@
 {
-  "name": "bahl",
+  "name": "balrog",
   "version": "0.0.0",
   "scripts": {
     "server": "node lib/test-server.js"
@@ -15,6 +15,7 @@
     "split": "~0.2.10",
     "concat-stream": "~1.0.1",
     "rss": "~0.2.0",
-    "underscore": "~1.5.1"
+    "underscore": "~1.5.1",
+    "ecstatic": "~0.4.8"
   }
 }
