@@ -1,6 +1,9 @@
 {
   "name": "bahl",
   "version": "0.0.0",
+  "scripts": {
+    "server": "node lib/test-server.js"
+  },
   "dependencies": {
     "cheerio": "0.10.1",
     "glob": "3.1.13",
