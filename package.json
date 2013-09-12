@@ -2,7 +2,9 @@
   "name": "balrog",
   "version": "0.0.0",
   "scripts": {
-    "server": "node lib/test-server.js"
+    "server": "node lib/test-server.js",
+    "build": "node index.js",
+    "start": "npm run build && npm run server"
   },
   "dependencies": {
     "cheerio": "0.10.1",
