@@ -11,6 +11,8 @@ test('collect file contents from a place', function (t) {
   collect(prefix, function (err, collection) {
     t.same(prefix, collection.prefix, 'prefix should be correct')
     t.same(expects, collection.files, 'files should match');
+
+    console.dir(collection.fullPaths());
     t.end()
   })
 })
