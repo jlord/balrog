@@ -4,7 +4,8 @@
   "scripts": {
     "server": "node lib/test-server.js",
     "build": "node index.js",
-    "start": "npm run build && npm run server"
+    "start": "npm run build && npm run server",
+    "clean": "rm -rf site/*"
   },
   "dependencies": {
     "cheerio": "0.10.1",
@@ -18,6 +19,7 @@
     "concat-stream": "~1.0.1",
     "rss": "~0.2.0",
     "underscore": "~1.5.1",
-    "ecstatic": "~0.4.8"
+    "ecstatic": "~0.4.8",
+    "tap": "~0.4.4"
   }
 }
