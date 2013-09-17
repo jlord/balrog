@@ -1,1 +1,0 @@
-You can reach me at [jess.lord@gmail.com](mailto:jess.lord@gmail.com)
