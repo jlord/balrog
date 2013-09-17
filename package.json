@@ -5,7 +5,8 @@
     "server": "node lib/test-server.js",
     "build": "node index.js",
     "start": "npm run build && npm run server",
-    "clean": "rm -rf site/*"
+    "clean": "rm -rf site/*",
+    "test": "tap-prettify test"
   },
   "dependencies": {
     "cheerio": "0.10.1",
@@ -20,6 +21,7 @@
     "rss": "~0.2.0",
     "underscore": "~1.5.1",
     "ecstatic": "~0.4.8",
-    "tap": "~0.4.4"
+    "tap": "~0.4.4",
+    "minimatch": "~0.2.12"
   }
 }

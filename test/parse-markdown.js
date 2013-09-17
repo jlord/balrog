@@ -14,9 +14,12 @@ test('make sure we get the correct data from markdown file', function (t) {
     title: 'Title',
     author: 'Author',
     date: 'Date',
-    tags: [ 'tag1', 'tag2', 'tag3' ] }
+    tags: [ 'tag1', 'tag2', 'tag3' ],
+  }
+
   var result = parser(getFileContents('title-author-date-tags.md'))
-  t.same(expect, result.meta, 'should get right metadata back')
+  delete result.content
+  t.same(expect, result, 'should get right metadata back')
   t.end()
 })
 
@@ -28,6 +31,7 @@ test('some pages will be pages and not posts', function (t) {
     tags: undefined,
   }
   var result = parser(getFileContents('page-not-post.md'))
-  t.same(expect, result.meta, 'should only populate title')
+  delete result.content
+  t.same(expect, result, 'should only populate title')
   t.end()
 })
