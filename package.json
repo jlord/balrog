@@ -22,6 +22,7 @@
     "underscore": "~1.5.1",
     "ecstatic": "~0.4.8",
     "tap": "~0.4.4",
-    "minimatch": "~0.2.12"
+    "minimatch": "~0.2.12",
+    "url-join": "0.0.1"
   }
 }
