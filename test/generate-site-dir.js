@@ -20,6 +20,7 @@ test('generating the site dir should work, ya?', function (t) {
     'blog/post.md',
     'page.html',
     'page.md',
+    'rss.xml',
   ].sort()
 
   var expectPostContent = 'Site, blog\n\n<h1>blog post</h1>\n<h2>author</h2>\n<h2>date</h2>\n<h2>tag, this, post</h2>\n<p>Hi</p>\n\n'
@@ -32,6 +33,17 @@ test('generating the site dir should work, ya?', function (t) {
     templates: {
       blog: 'blog/*',
       about: 'about.md'
+    },
+    feed: {
+      postsDir: path.join(locate('content'), 'blog'),
+      urlPrefix: 'blog',
+      site: {
+        url: 'http://example.org',
+        title: 'My Site',
+        description: 'A site for stuff, ya know?',
+        imageUrl: 'http://example.org/image.png',
+        author: 'brianloveswords',
+      }
     }
   }, function (err, result) {
     var aboutContent = readFile('/site/about.html')
