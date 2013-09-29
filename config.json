@@ -5,7 +5,7 @@
 	"site_description": "jlord builds this site",
 	"site_author": "jlord",
   "icon": "",
-	"ignores": ["license, readme"],
+  "posts_per_page": "2",
 	"templates": {
 		"flat-page": ["about", "contact", "index"],
 		"single-post": ["/posts/*.md"]
