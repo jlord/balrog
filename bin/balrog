@@ -23,7 +23,6 @@ genSiteDir({
   console.dir(files)
 })
 
-
 function getDirectory() {
   var dirArg = process.argv[2]
   if (!dirArg)
