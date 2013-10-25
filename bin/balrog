@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+var path = require('path')
+var genSiteDir = require('../lib/generate-site-dir')
+
+var join = path.join.bind(path)
+var currentDir = getDirectory()
+
+var templateDir = join(currentDir, 'templates')
+var partialsDir = join(currentDir, 'partials')
+var inputDir = join(currentDir, 'content')
+var outputDir = join(currentDir, 'site')
+
+genSiteDir({
+  source: inputDir,
+  output: outputDir,
+  templateDir: templateDir,
+  partialsDir: partialsDir,
+}, function (err, files) {
+  if (err)
+    throw err
+
+  console.log('success')
+  console.dir(files)
+})
+
+
+function getDirectory() {
+  var dirArg = process.argv[2]
+  if (!dirArg)
+    return process.cwd()
+
+  return path.resolve(dirArg)
+}
