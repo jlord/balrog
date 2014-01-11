@@ -6,7 +6,7 @@
     "build": "node index.js",
     "start": "npm run build && npm run server",
     "clean": "rm -rf site/*",
-    "test": "tap-prettify test"
+    "test": "tape test/*.js"
   },
   "bin": {
     "balrog": "./bin/balrog"
@@ -27,5 +27,8 @@
     "tap": "~0.4.4",
     "minimatch": "~0.2.12",
     "url-join": "0.0.1"
+  },
+  "devDependencies": {
+    "tape": "~2.3.2"
   }
 }
