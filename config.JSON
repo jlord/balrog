@@ -1,0 +1,17 @@
+{
+ "source": "",
+ "output": "",
+ "templateDir": "",
+ "templates": {},
+ "feed": {
+  "postsDir": "",
+  "urlPrefix": "",
+  "site": {
+   "url": "",
+   "title": "",
+   "description": "",
+   "imageUrl": "",
+   "author": ""
+  }
+ }
+}
