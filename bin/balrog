@@ -3,7 +3,6 @@
 var path = require('path')
 var genSiteDir = require('../lib/generate-site-dir')
 var fs = require('fs')
-var serve = require('../lib/test-server.js')
 
 var join = path.join.bind(path)
 var currentDir = getDirectory()
@@ -23,13 +22,12 @@ fs.readFile(optsFile, function (err, data) {
       throw err
 
     console.log('Site built')
-    if (process.argv[2] == "--serve") {
-     var serve = require('../lib/test-server.js')
+    if (process.argv[2] === "--serve") {
+      var serve = require('../lib/test-server.js')
     }
-    else if (!process.argv[2] && process.argv[2] != "--serve" ) {
-      console.log("Trying to serve up your site locally? `balrog --serve`  ")
+    if (process.argv[2] != "--serve" ) {
+      console.log("Trying to serve up your site locally? `balrog --serve` ")
     }
-
   })
 })
 
