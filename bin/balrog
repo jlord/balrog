@@ -15,17 +15,19 @@ var optsFile = join(currentDir, 'config.json')
 
 fs.readFile(optsFile, function (err, data) {
   if (err) console.log(err)
-  var opts = JSON.parse(data)
+  var opts = resolvePaths(data)
 
   genSiteDir(opts, function (err, files) {
+    console.log("balrog opts", opts)
     if (err)
       throw err
 
     console.log('Site built')
+    // console.dir(files)
     if (process.argv[2] === "--serve") {
       var serve = require('../lib/test-server.js')
     }
-    if (process.argv[2] != "--serve" ) {
+    if (process.argv[2] === "" && process.argv[2] != "--serve" ) {
       console.log("Trying to serve up your site locally? `balrog --serve` ")
     }
   })
@@ -34,4 +36,17 @@ fs.readFile(optsFile, function (err, data) {
 function getDirectory() {
   var dirArg = process.cwd()
   return path.resolve(dirArg)
+}
+
+function resolvePaths(data) {
+  var opts = JSON.parse(data)
+  var needResolve = ['source', 'output', 'templateDir']
+
+  needResolve.forEach(function (dir) {
+    var thePath = opts[dir].toString()
+    console.log("hi", path.resolve(thePath))
+    opts[dir] = path.resolve(thePath)
+  })
+  console.log("new opts", opts)
+  return opts
 }

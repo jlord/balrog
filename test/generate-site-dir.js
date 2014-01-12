@@ -46,6 +46,7 @@ test('generating the site dir should work, ya?', function (t) {
       }
     }
   }, function (err, result) {
+    console.log("test result", result)
     var aboutContent = readFile('/site/about.html')
     var postContent = readFile('/site/blog/post.html')
 
