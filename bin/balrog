@@ -18,12 +18,10 @@ fs.readFile(optsFile, function (err, data) {
   var opts = resolvePaths(data)
 
   genSiteDir(opts, function (err, files) {
-    console.log("balrog opts", opts)
     if (err)
       throw err
 
     console.log('Site built')
-    // console.dir(files)
     if (process.argv[2] === "--serve") {
       var serve = require('../lib/test-server.js')
     }
@@ -44,9 +42,7 @@ function resolvePaths(data) {
 
   needResolve.forEach(function (dir) {
     var thePath = opts[dir].toString()
-    console.log("hi", path.resolve(thePath))
     opts[dir] = path.resolve(thePath)
   })
-  console.log("new opts", opts)
   return opts
 }
