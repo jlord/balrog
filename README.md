@@ -104,7 +104,7 @@ Create general non-blog pages
 
 #### Build & Serve Locally
 
-- `balrog -serve
+- `balrog -serve`
 
 **There needs to be a serve only option**
 
