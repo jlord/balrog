@@ -1,6 +1,19 @@
 {
   "name": "balrog",
   "version": "0.0.0",
+  "description": "static site generator",
+  "main": ".bin/balrog",
+  "author": "jessica lord",
+  "contributors": ["brainloveswords"],
+  "license": "BSD",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jlord/balrog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jlord/balrog/issues"
+  },
+    "homepage": "https://github.com/jlord/balrog",
   "scripts": {
     "server": "node lib/test-server.js",
     "build": "node index.js",

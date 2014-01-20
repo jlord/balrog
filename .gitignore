@@ -2,3 +2,5 @@ balrog.ai
 node_modules
 site/
 ./content/
+npm-debug.log
+
