@@ -69,7 +69,7 @@ opts = {
 - `source`, `output`, `templateDir` are the locations for the starting content, templates and your build.
 - `partialsDir` is optional and is for Handlebars template partials
 - `templates` is an object designating what templates to use on what pages. You can list directories or individual files in an array.
-- `pagination` is how many posts per page to show on post feed pages.
+- `pagination` is how many posts per page to show on post feed pages. If you don't include this, it defaults to 5.
 - `feed` is not optional, you must provide this information for generating the RSS
 
 ## To Build
@@ -90,7 +90,7 @@ When creating a blog feed page template (the one that shows x (pagination number
 
 ```HTML
 {{#posts}}
-  {{content.content}}
+  {{{content.content}}}
 {{/posts}}
 ```
 
