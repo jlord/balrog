@@ -2,16 +2,16 @@ _this is the new readme, it's in progress. it's not all accurate. don't try and 
 
 # Hi!
 
-![balrog](balrog.png)
+![balrog](https://raw2.github.com/jlord/balrog/master/balrog.png)
 ---
 
 _WIP_
 
 A static site generator with these goals:
 
-- Written in the pure, classic and elegant language JavaScript, using [Node.js](http://www.nodejs.org).
-- Use [Handlebars](http://handlebarsjs.com/) for templating.
-- Pagination, post feed!
+- Written in the pure, classic and elegant language **JavaScript**, using [Node.js](http://www.nodejs.org).
+- Use [**Handlebars**](http://handlebarsjs.com/) for templating.
+- Includes **paginated post feed**!
 - RSS
 - **Less mattery front-matter**. Meta data extracted from post headings allowing markdown files to be free from traditional front-matter.
 
@@ -20,19 +20,20 @@ A static site generator with these goals:
 
 ```bash
 |_BlogFolder
-  |_assets (optional)
-    |_css
-    |_js
-    |_img
-  |_partials (optional)
+  |_partials (required)
+    -pagination.html (required)
     -header.html
     -footer.html
   |_templates
     -page.html
     -blog.html
     -feed.html
-  |_content
-    |_blog
+  |_content (required)
+    |_assets (optional)
+      |_css
+      |_js
+      |_img
+    |_blog 
       -blog-post.md
       -moar-post.md
     |_about.md
@@ -74,17 +75,23 @@ opts = {
 
 ## To Build
 
+1. Requires [Node.js](http://www.nodejs.org/download) and [NPM](http://www.npmjs.org) (which comes with .pkg and .msi downloads of Node.js)
+2. You'll install the `balrog` module globally, then run it from the command line within a directory set up in the style diagramed above.
+
 ### Install Balrog
 
-- `npm install -g balrog`
-_(not yet on NPM, but it will be in the future)_
+```bash
+npm install -g balrog
+```
 
 ### Build Your Content
 
-- set up file structure as described above
-- create config.JSON
+1. Set up file structure as described above
+ - You can copy the base files from the [template branch](#) 
+2. Create `config.JSON`
+3. Make sure you include and use the following as described:
 
-#### A note on Templates/Blog Feed
+#### Blog Feed Template
 
 When creating a blog feed page template (the one that shows x (pagination number) of posts per page), your template must look like this:
 
@@ -92,7 +99,21 @@ When creating a blog feed page template (the one that shows x (pagination number
 {{#posts}}
   {{{content.content}}}
 {{/posts}}
+{{> pagination}}
 ```
+
+#### Pagination Template
+
+The "Previous/Next" links are added to the bottom of blog feeds via a Handlebars Partial template:
+
+```bash
+<div class="turn-page">
+  <a class="turn-previous" href="{{previous}}">Previous</a>
+  <a class="turn-next" href="{{next}}">Next</a>
+</div>
+```
+
+Additionally, the class `end-of-pages` is applied when there is not a previous or next page.
 
 #### Posts, Meta Data
 
@@ -111,20 +132,21 @@ Hi this is a post. So pancake.
 
 #### Pages
 
-Create general non-blog pages
+Create general non-blog pages (such as an About page) by placing the .md file in the ``/contents`` directory. You can assign it a template in the `config.json`
 
-- Site metadata and template designation happens in `config.json`. You can link files or directories to a template.
 
 ### Build!
+
+From within your soon-to-be Balrog'd directory, run:
 
 - `balrog`
 
 #### Build & Serve Locally
 
+Serve up the site locally on a random port:
+
 - `balrog -serve`
 
-**There needs to be a serve only option**
+#### Host on GitHub Pages
 
-#### Future
-
-For now, if you want to host this on [GitHub Pages](http://pages.github.com) you'll have to copy the generated `site` folder into a branch named `gh-pages`. I'm planning on getting it going on Heroku or such and will need to create a little server doodad. I'll also probably generate some JSON for all the post data so that I can do other nifty stuff with it.
+Create a new repository on GitHub and place all the contents of your Balrog generated `/site` directory on a branch named `gh-pages`. Bam, website! You can find it at: yourgithubname.github.io/reponame
