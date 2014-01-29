@@ -113,7 +113,7 @@ The "Previous/Next" links are added to the bottom of blog feeds via a Handlebars
 </div>
 ```
 
-Additionally, the class `end-of-pages` is applied when there is not a previous or next page.
+Additionally, the class `end-of-pages` is applied when there is not a previous or next page. _If you do not include a partials directory, it will default to generating 1 blog post feed page with all posts._
 
 #### Posts, Meta Data
 
