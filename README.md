@@ -83,7 +83,7 @@ npm install -g balrog
 ### Build Your Content
 
 1. Set up file structure as described above
- - You can copy the base files from the [template branch](#) 
+ - You can copy the base files from the [template branch](https://github.com/jlord/balrog/tree/template) 
 2. Create `config.JSON`
 3. Make sure you include and use the following as described:
 
