@@ -1,11 +1,7 @@
-_this is the new readme, it's in progress. it's not all accurate. don't try and follow it :)_
-
 # Hi!
 
 ![balrog](https://raw2.github.com/jlord/balrog/master/balrog.png)
 ---
-
-_WIP_
 
 A static site generator with these goals:
 
@@ -20,8 +16,8 @@ A static site generator with these goals:
 
 ```bash
 |_BlogFolder
-  |_partials (required)
-    -pagination.html (required)
+  |_partials (optional)
+    -pagination.html (optional)
     -header.html
     -footer.html
   |_templates
