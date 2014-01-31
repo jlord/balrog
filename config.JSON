@@ -1,0 +1,23 @@
+{
+ "source": "./content",
+ "output": "./site",
+ "pagination": 4,
+ "templateDir": "./templates",
+ "partialsDir": "./partials",
+ "templates": {
+  "blog": "blog/*",
+  "about": "about.md",
+  "blogfeed": "page/*"
+ },
+ "feed": {
+  "postsDir": "./content/blog",
+  "urlPrefix": "blog",
+  "site": {
+   "url": "http://example.org",
+   "title": "My Site",
+   "description": "A site for stuff, ya know?",
+   "imageUrl": "http://example.org/image.png",
+   "author": "jlord"
+  }
+ }
+}
