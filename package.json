@@ -21,7 +21,7 @@
     "build": "node index.js",
     "start": "npm run build && npm run server",
     "clean": "rm -rf site/*",
-    "test": "tape test/*.js"
+    "test": "node test/*.js"
   },
   "bin": {
     "balrog": "./bin/balrog"
