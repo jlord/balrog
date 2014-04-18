@@ -7,6 +7,8 @@ var fs = require('fs')
 var join = path.join.bind(path)
 var currentDir = getDirectory()
 
+if (currentDir.match('balrog')) return console.log("NOT HERE!")
+
 var templateDir = join(currentDir, 'templates')
 var partialsDir = join(currentDir, 'partials')
 var inputDir = join(currentDir, 'content')
