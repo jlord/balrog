@@ -1,5 +1,7 @@
 # Hi!
 
+_Disclaimer: One, this documentation is out of date, two, I've made this for my own purposes so it's very suited to that, it likely won't work, out of the box, just like you want it to, or be very adaptable. But! Have a look if ya want, fork and change it all up!_
+
 ![balrog](https://raw2.github.com/jlord/balrog/master/balrog.png)
 ---
 
