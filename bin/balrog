@@ -27,6 +27,19 @@ fs.readFile(optsFile, function (err, data) {
     if (process.argv[2] === "--serve") {
       var serve = require('../lib/test-server.js')
     }
+    // TODO Parse flags better
+    if (process.argv[3] === "-w") {
+      console.log("watch", currentDir)
+      // TODO Refactor generating the site dir and figure out why
+      // I can't just watch the current or content dir
+      fs.watch(currentDir + "/content/blog", function (event, file) {
+        genSiteDir(opts, function (err, files) {
+          if (err)
+            throw err
+          console.log("Regenerated site..")
+        })
+      })
+    }
     if (process.argv[2] === "" && process.argv[2] != "--serve" ) {
       console.log("Trying to serve up your site locally? `balrog --serve` ")
     }
