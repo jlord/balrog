@@ -3,6 +3,7 @@
 var path = require('path')
 var genSiteDir = require('../lib/generate-site-dir')
 var fs = require('fs')
+var gaze = require('gaze');
 
 var join = path.join.bind(path)
 var currentDir = getDirectory()
@@ -29,14 +30,15 @@ fs.readFile(optsFile, function (err, data) {
     }
     // TODO Parse flags better
     if (process.argv[3] === "-w") {
-      console.log("watch", currentDir)
-      // TODO Refactor generating the site dir and figure out why
-      // I can't just watch the current or content dir
-      fs.watch(currentDir + "/content/blog", function (event, file) {
-        genSiteDir(opts, function (err, files) {
-          if (err)
-            throw err
-          console.log("Regenerated site..")
+      console.log("watch", inputDir)
+      gaze(inputDir + '/**/*', function(err, watcher) {
+        console.log("Watching..")
+        this.on('all', function(event, filepath) {
+          genSiteDir(opts, function (err, files) {
+            if (err)
+              throw err
+            console.log("Regenerated site...", new Date())
+          })
         })
       })
     }

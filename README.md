@@ -31,7 +31,7 @@ A static site generator with these goals:
       |_css
       |_js
       |_img
-    |_blog 
+    |_blog
       -blog-post.md
       -moar-post.md
     |_about.md
@@ -45,7 +45,7 @@ opts = {
   output: "./site",
   templateDir: "./templates",
   partialsDir: "./partials",
-  pagination: 4, 
+  pagination: 4,
   templates: {
     blog: 'blog/*',
     about: 'about.md',
@@ -85,7 +85,7 @@ npm install -g balrog
 ### Build Your Content
 
 1. Set up file structure as described above
- - You can copy the base files from the [template branch](https://github.com/jlord/balrog/tree/template) 
+ - You can copy the base files from the [template branch](https://github.com/jlord/balrog/tree/template)
 2. Create `config.JSON`
 3. Make sure you include and use the following as described:
 
@@ -126,24 +126,17 @@ Meta data is generated through the first 4 lines of each blog post. It doesn't m
 Hi this is a post. So pancake.
 ```
 
-**TO DO** An extension to not do this if you wish not to.
-
-#### Pages
-
-Create general non-blog pages (such as an About page) by placing the .md file in the ``/contents`` directory. You can assign it a template in the `config.json`
-
-
 ### Build!
 
 From within your soon-to-be Balrog'd directory, run:
 
 - `balrog`
 
-#### Build & Serve Locally
+#### Build & Serve Locally & Watch
 
-Serve up the site locally on a random port:
+Serve up the site locally on a random port and watch for changes:
 
-- `balrog -serve`
+- `balrog -serve -w`
 
 #### Host on GitHub Pages
 
