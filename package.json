@@ -21,7 +21,8 @@
     "build": "node index.js",
     "start": "npm run build && npm run server",
     "clean": "rm -rf site/*",
-    "test": "node test/*.js"
+    "test": "node test/*.js",
+    "p": "node lib/generate-photo-page.js"
   },
   "bin": {
     "balrog": "./bin/balrog"
