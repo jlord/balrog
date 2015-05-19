@@ -136,7 +136,7 @@ From within your soon-to-be Balrog'd directory, run:
 
 Serve up the site locally on a random port and watch for changes:
 
-- `balrog -serve -w`
+- `balrog --serve -w`
 
 #### Host on GitHub Pages
 
