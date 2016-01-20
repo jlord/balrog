@@ -20,14 +20,14 @@ I'm exercising my mind by making a static site generator just like I want it. Th
 
 Hi this is a post. So pancake.
 ```
-- Site metadata and template designation happens in `config.json`. You can link files or directories to a template.
+- Site metadata and template designation happens in `config.JSON`. You can link files or directories to a template.
 
 ### Get Running
 
     git clone https://github.com/jlord/balrog.git
     cd balrog
 
-Edit `config.json` then make some posts and stuff.
+Edit `config.JSON` then make some posts and stuff.
 
     npm run build
 
@@ -53,7 +53,7 @@ and if you want to build & run at the same time you can do
 
 #### Other Files
 
-- **config.json** a .JSON file with site meta data in it and template designations. You can link files or directories to a template.
+- **config.JSON** a .JSON file with site meta data in it and template designations. You can link files or directories to a template.
 
 ```json
 {
