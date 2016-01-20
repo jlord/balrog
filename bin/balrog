@@ -14,7 +14,7 @@ var templateDir = join(currentDir, 'templates')
 var partialsDir = join(currentDir, 'partials')
 var inputDir = join(currentDir, 'content')
 var outputDir = join(currentDir, 'site')
-var optsFile = join(currentDir, 'config.json')
+var optsFile = join(currentDir, 'config.JSON')
 
 fs.readFile(optsFile, function (err, data) {
   if (err) console.log(err)
