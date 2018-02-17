@@ -29,7 +29,7 @@
   "dependencies": {
     "cheerio": "~0.10.1",
     "concat-stream": "~1.0.1",
-    "cpr": "~0.1.1",
+    "cpr": "~3.0.1",
     "ecstatic": "~0.4.8",
     "gaze": "^0.5.1",
     "glob": "~3.1.13",
